@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pedir Pod - ManiaBR</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .container {
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      max-width: 400px;
+      width: 100%;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    label {
+      font-weight: bold;
+      margin-top: 10px;
+      display: block;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-bottom: 15px;
+    }
+
+    button {
+      width: 100%;
+      background-color: #c82350;
+      color: white;
+      padding: 12px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #a61c3d;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Fazer Pedido</h2>
+    <form id="pedidoForm">
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" required />
+
+      <label for="endereco">Endereço:</label>
+      <textarea id="endereco" rows="2" required></textarea>
+
+      <label for="sabor">Sabor:</label>
+      <input type="text" id="sabor" required />
+
+      <label for="modelo">Modelo do Pod:</label>
+      <select id="modelo" required>
+        <option value="" disabled selected>Escolha o modelo</option>
+        <option value="Elf Bar">Elf Bar</option>
+        <option value="Ignite">Ignite</option>
+        <option value="Zomo">Zomo</option>
+        <!-- Adicione mais modelos se quiser -->
+      </select>
+
+      <button type="submit">Enviar Pedido</button>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('pedidoForm');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const nome = document.getElementById('nome').value;
+      const endereco = document.getElementById('endereco').value;
+      const sabor = document.getElementById('sabor').value;
+      const modelo = document.getElementById('modelo').value;
+
+      const mensagem = `Olá! Gostaria de fazer um pedido:%0A%0ANome: ${nome}%0AEndereço: ${endereco}%0ASabor: ${sabor}%0AModelo: ${modelo}`;
+      const url = `https://www.instagram.com/direct/t/17841450814580422/?text=${mensagem}`;
+
+      window.open(url, '_blank');
+    });
+  </script>
+</body>
+</html>
